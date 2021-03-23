@@ -1,8 +1,11 @@
 <HEAD>
+   
 <TITLE>
 Pagina A
 </TITLE>
   
+  <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-iot-component/aframe-iot-component.js"></script>
   
   <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8SVH48X63K"></script>
@@ -17,5 +20,33 @@ Pagina A
   
 </HEAD>
 <BODY>
-Esta es mi pagina A
+ <a-scene>
+      
+      <a-camera>
+      <a-cursor fuse="true"></a-cursor>
+      </a-camera>
+      
+      <a-assets>
+        <img id="moon" src="https://cdn.glitch.com/ad148f63-484e-4c92-9110-f17b7fe90104%2Fmoon.jpg?v=1612787392609">
+        <img id="sky" src="https://cdn.glitch.com/ad148f63-484e-4c92-9110-f17b7fe90104%2Fsky.jpg?v=1612786824545">
+      </a-assets>
+      
+      <a-sky src="#sky"></a-sky>
+      
+      <a-sound src="https://cdn.glitch.com/ad148f63-484e-4c92-9110-f17b7fe90104%2Fsonido.mp3?v=1612788583026" autoplay="true" position="-20 0 -5"></a-sound>
+      <!-- <a-sphere position="-20 0 -5" </a-sphere> -->
+      
+      <a-entity id="mouseCursor" cursor="rayOrigin: mouse"></a-entity>
+      <a-entity rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 100000">
+      <a-sphere src="#moon" position="0 200 -400" radius="20" color="#1a0b48" iot="device: 527" 
+                animation__mouseenter="property: scale; to: 4 4 4; startEvents:mouseenter; dur: 5000"
+                animation__mouseleave="property: scale; to: 1 1 1; startEvents:mouseleave; dur: 1000"> 
+      </a-sphere>
+      </a-entity>
+      
+      <a-light type="ambient" intensity="1" color="#d4d8da"></a-light>
+      
+      <a-light type="point" color="#f7f6db" position="-200 200 350"></a-light>
+      
+    </a-scene>
 </BODY>
